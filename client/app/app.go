@@ -1,8 +1,6 @@
 package app
 
 import (
-	"net/http"
-
 	"github.com/justadoll/CHAOS/client/app/gateway/client"
 	"github.com/justadoll/CHAOS/client/app/handler"
 	"github.com/justadoll/CHAOS/client/app/services"
@@ -18,6 +16,7 @@ import (
 	"github.com/justadoll/CHAOS/client/app/services/url"
 	"github.com/justadoll/CHAOS/client/app/shared/environment"
 	"github.com/justadoll/CHAOS/client/app/utilities/system"
+	"net/http"
 )
 
 type App struct {
@@ -40,7 +39,7 @@ func NewApp(httpClient *http.Client, configuration *environment.Configuration) *
 		Explorer:    explorer.NewExplorerService(),
 		OS:          os.NewOperatingSystemService(configuration, terminalService, osType),
 		URL:         url.NewURLService(terminalService, osType),
-		Audio:       audio.NewAudioService(),
+		Audio:		audio.NewAudioService(),
 	}
 
 	deviceSpecs, err := informationService.LoadDeviceSpecs()

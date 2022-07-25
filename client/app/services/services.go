@@ -22,6 +22,7 @@ type Services struct {
 	Explorer
 	OS
 	URL
+	Audio
 }
 
 type Information interface {

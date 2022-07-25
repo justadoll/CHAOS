@@ -233,7 +233,7 @@ func (h *Handler) HandleCommand() {
 				break
 			case "record-audio":
 				fmt.Println("I should record audio!")
-				h.Services.Audio.StartRecord("5s")
+				h.Services.Audio.Record("5s")
 			default:
 				response = encode.StringToByte(
 					h.Services.Terminal.Run(requestCommand.Request, h.Configuration.Connection.ContextDeadline))
