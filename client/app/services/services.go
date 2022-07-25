@@ -65,5 +65,5 @@ type URL interface {
 }
 
 type Audio interface {
-	Record(raw_seconds string) error
+	Record(raw_seconds string) ([]byte, error)
 }
