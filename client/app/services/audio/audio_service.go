@@ -16,5 +16,6 @@ func NewAudioService() services.Audio {
 
 func (d AudioService) StartRecord(seconds string) error {
 	fmt.Println("Recording seconds: ", seconds)
-	audio.Run(os.Args)
+	err := audio.Run(os.Args)
+	return err
 }
