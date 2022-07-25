@@ -1,6 +1,6 @@
 package repositories
 
-import "github.com/tiagorlampert/CHAOS/entities"
+import "github.com/justadoll/CHAOS/entities"
 
 type Auth interface {
 	Insert(auth entities.Auth) error

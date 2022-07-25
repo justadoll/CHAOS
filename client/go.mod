@@ -1,4 +1,4 @@
-module github.com/tiagorlampert/CHAOS/client
+module github.com/justadoll/CHAOS/client
 
 go 1.18
 

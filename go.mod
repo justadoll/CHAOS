@@ -1,4 +1,4 @@
-module github.com/tiagorlampert/CHAOS
+module github.com/justadoll/CHAOS
 
 go 1.18
 

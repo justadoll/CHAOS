@@ -2,25 +2,27 @@ package main
 
 import (
 	"fmt"
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
+	"github.com/justadoll/CHAOS/infrastructure/database"
+	"github.com/justadoll/CHAOS/internal/environment"
+	"github.com/justadoll/CHAOS/internal/middleware"
+	"github.com/justadoll/CHAOS/internal/utils/constants"
+	"github.com/justadoll/CHAOS/internal/utils/system"
+	"github.com/justadoll/CHAOS/internal/utils/template"
+	"github.com/justadoll/CHAOS/internal/utils/ui"
+	httpDelivery "github.com/justadoll/CHAOS/presentation/http"
+	"github.com/justadoll/CHAOS/repositories/sqlite"
+	"github.com/justadoll/CHAOS/services/audio"
+	"github.com/justadoll/CHAOS/services/auth"
+	"github.com/justadoll/CHAOS/services/client"
+	"github.com/justadoll/CHAOS/services/device"
+	"github.com/justadoll/CHAOS/services/payload"
+	"github.com/justadoll/CHAOS/services/url"
+	"github.com/justadoll/CHAOS/services/user"
 	"github.com/sirupsen/logrus"
-	"github.com/tiagorlampert/CHAOS/infrastructure/database"
-	"github.com/tiagorlampert/CHAOS/internal/environment"
-	"github.com/tiagorlampert/CHAOS/internal/middleware"
-	"github.com/tiagorlampert/CHAOS/internal/utils/constants"
-	"github.com/tiagorlampert/CHAOS/internal/utils/system"
-	"github.com/tiagorlampert/CHAOS/internal/utils/template"
-	"github.com/tiagorlampert/CHAOS/internal/utils/ui"
-	httpDelivery "github.com/tiagorlampert/CHAOS/presentation/http"
-	"github.com/tiagorlampert/CHAOS/repositories/sqlite"
-	"github.com/tiagorlampert/CHAOS/services/auth"
-	"github.com/tiagorlampert/CHAOS/services/client"
-	"github.com/tiagorlampert/CHAOS/services/device"
-	"github.com/tiagorlampert/CHAOS/services/payload"
-	"github.com/tiagorlampert/CHAOS/services/url"
-	"github.com/tiagorlampert/CHAOS/services/user"
-	"net/http"
 )
 
 const AppName = "CHAOS"
@@ -73,6 +75,7 @@ func NewApp(logger *logrus.Logger, configuration *environment.Configuration, dbC
 	deviceService := device.NewDeviceService(deviceRepository)
 	clientService := client.NewClientService(Version, authRepository, payloadService, authService)
 	urlService := url.NewUrlService(clientService)
+	audioService := audio.NewAudioService(clientService)
 
 	//router
 	router := gin.Default()
@@ -103,6 +106,7 @@ func NewApp(logger *logrus.Logger, configuration *environment.Configuration, dbC
 		userService,
 		deviceService,
 		urlService,
+		audioService,
 	)
 
 	return &App{

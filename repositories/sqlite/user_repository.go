@@ -2,8 +2,8 @@ package sqlite
 
 import (
 	"github.com/jinzhu/gorm"
-	"github.com/tiagorlampert/CHAOS/entities"
-	"github.com/tiagorlampert/CHAOS/repositories"
+	"github.com/justadoll/CHAOS/entities"
+	"github.com/justadoll/CHAOS/repositories"
 )
 
 type userSqliteRepository struct {

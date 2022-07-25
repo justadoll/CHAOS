@@ -2,9 +2,9 @@ package download
 
 import (
 	"fmt"
-	"github.com/tiagorlampert/CHAOS/client/app/gateway"
-	"github.com/tiagorlampert/CHAOS/client/app/services"
-	"github.com/tiagorlampert/CHAOS/client/app/shared/environment"
+	"github.com/justadoll/CHAOS/client/app/gateway"
+	"github.com/justadoll/CHAOS/client/app/services"
+	"github.com/justadoll/CHAOS/client/app/shared/environment"
 	"io/ioutil"
 	"net/http"
 	"os"

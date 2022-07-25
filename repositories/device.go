@@ -1,7 +1,7 @@
 package repositories
 
 import (
-	"github.com/tiagorlampert/CHAOS/entities"
+	"github.com/justadoll/CHAOS/entities"
 	"time"
 )
 

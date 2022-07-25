@@ -3,8 +3,8 @@ package sqlite
 import (
 	"errors"
 	"github.com/jinzhu/gorm"
-	"github.com/tiagorlampert/CHAOS/entities"
-	"github.com/tiagorlampert/CHAOS/repositories"
+	"github.com/justadoll/CHAOS/entities"
+	"github.com/justadoll/CHAOS/repositories"
 	"time"
 )
 

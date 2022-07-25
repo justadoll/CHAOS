@@ -3,8 +3,8 @@ package client
 import (
 	"bytes"
 	"fmt"
-	"github.com/tiagorlampert/CHAOS/client/app/gateway"
-	"github.com/tiagorlampert/CHAOS/client/app/shared/environment"
+	"github.com/justadoll/CHAOS/client/app/gateway"
+	"github.com/justadoll/CHAOS/client/app/shared/environment"
 	"io"
 	"net/http"
 )

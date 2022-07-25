@@ -1,9 +1,9 @@
 package information
 
 import (
-	"github.com/tiagorlampert/CHAOS/client/app/entities"
-	"github.com/tiagorlampert/CHAOS/client/app/services"
-	"github.com/tiagorlampert/CHAOS/client/app/utilities/network"
+	"github.com/justadoll/CHAOS/client/app/entities"
+	"github.com/justadoll/CHAOS/client/app/services"
+	"github.com/justadoll/CHAOS/client/app/utilities/network"
 	"os"
 	"os/user"
 	"runtime"

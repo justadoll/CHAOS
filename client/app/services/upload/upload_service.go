@@ -3,8 +3,8 @@ package upload
 import (
 	"bytes"
 	"fmt"
-	"github.com/tiagorlampert/CHAOS/client/app/services"
-	"github.com/tiagorlampert/CHAOS/client/app/shared/environment"
+	"github.com/justadoll/CHAOS/client/app/services"
+	"github.com/justadoll/CHAOS/client/app/shared/environment"
 	"io/ioutil"
 	"mime/multipart"
 	"net/http"

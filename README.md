@@ -1,6 +1,6 @@
 <p align="center">
   <a href="#">
-    <img src="https://raw.githubusercontent.com/tiagorlampert/CHAOS/master/public/logo.png" alt="CHAOS logo" width="400" height="130">
+    <img src="https://raw.githubusercontent.com/justadoll/CHAOS/master/public/logo.png" alt="CHAOS logo" width="400" height="130">
   </a>
 </p>
 
@@ -9,10 +9,10 @@
   <a href="https://golang.org/">
     <img src="https://img.shields.io/badge/Golang-1.18-blue.svg?style=flat-square">
   </a>
-    <a href="https://github.com/tiagorlampert/CHAOS/releases">
+    <a href="https://github.com/justadoll/CHAOS/releases">
     <img src="https://img.shields.io/badge/Release-v5-red.svg?style=flat-square">
   </a>
-  <a href="https://github.com/tiagorlampert/CHAOS/blob/master/LICENSE">
+  <a href="https://github.com/justadoll/CHAOS/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square">
   </a>
   <a href="https://hub.docker.com/r/tiagorlampert/chaos">
@@ -82,7 +82,7 @@ Some install options are available:
 $ sudo apt install golang git -y
 
 # Get this repository
-$ git clone https://github.com/tiagorlampert/CHAOS
+$ git clone https://github.com/justadoll/CHAOS
 
 # Go into the repository
 $ cd CHAOS/
@@ -149,11 +149,11 @@ If you enjoyed this project, give me a cup of coffee. :)
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=SG83FSKPKCRJ6&currency_code=USD&source=url)
 
 ## Sponsors
-<img src="https://raw.githubusercontent.com/tiagorlampert/CHAOS/master/public/jetbrains.png" width="30" height="30" /> Sponsored by [JetBrains Open Source License](https://www.jetbrains.com/buy/opensource/).
+<img src="https://raw.githubusercontent.com/justadoll/CHAOS/master/public/jetbrains.png" width="30" height="30" /> Sponsored by [JetBrains Open Source License](https://www.jetbrains.com/buy/opensource/).
 
 ## Copyright and license
 
->The [MIT License](https://github.com/tiagorlampert/CHAOS/blob/master/LICENSE)
+>The [MIT License](https://github.com/justadoll/CHAOS/blob/master/LICENSE)
 >
 >Copyright (c) 2017, Tiago Rodrigo Lampert
 >

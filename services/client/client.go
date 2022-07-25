@@ -3,7 +3,8 @@ package client
 import (
 	"context"
 	"errors"
-	"github.com/tiagorlampert/CHAOS/internal/utils/system"
+
+	"github.com/justadoll/CHAOS/internal/utils/system"
 )
 
 type (

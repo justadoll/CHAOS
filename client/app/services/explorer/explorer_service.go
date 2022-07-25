@@ -1,8 +1,8 @@
 package explorer
 
 import (
-	"github.com/tiagorlampert/CHAOS/client/app/entities"
-	"github.com/tiagorlampert/CHAOS/client/app/services"
+	"github.com/justadoll/CHAOS/client/app/entities"
+	"github.com/justadoll/CHAOS/client/app/services"
 	"io/ioutil"
 	"os/user"
 )

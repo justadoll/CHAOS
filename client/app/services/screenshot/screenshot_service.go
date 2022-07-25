@@ -3,8 +3,8 @@ package screenshot
 import (
 	"bufio"
 	"bytes"
+	"github.com/justadoll/CHAOS/client/app/services"
 	"github.com/kbinani/screenshot"
-	"github.com/tiagorlampert/CHAOS/client/app/services"
 	"image/png"
 )
 

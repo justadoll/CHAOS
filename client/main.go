@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/tiagorlampert/CHAOS/client/app"
-	"github.com/tiagorlampert/CHAOS/client/app/shared/environment"
-	"github.com/tiagorlampert/CHAOS/client/app/ui"
-	"github.com/tiagorlampert/CHAOS/client/app/utilities/network"
+	"github.com/justadoll/CHAOS/client/app"
+	"github.com/justadoll/CHAOS/client/app/shared/environment"
+	"github.com/justadoll/CHAOS/client/app/ui"
+	"github.com/justadoll/CHAOS/client/app/utilities/network"
 )
 
 var (

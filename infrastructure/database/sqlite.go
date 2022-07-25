@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
-	"github.com/tiagorlampert/CHAOS/entities"
+	"github.com/justadoll/CHAOS/entities"
 	"os"
 	"strings"
 )

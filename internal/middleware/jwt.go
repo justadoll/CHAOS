@@ -3,9 +3,9 @@ package middleware
 import (
 	"github.com/appleboy/gin-jwt/v2"
 	"github.com/gin-gonic/gin"
-	"github.com/tiagorlampert/CHAOS/entities"
-	jwtUtil "github.com/tiagorlampert/CHAOS/internal/utils/jwt"
-	"github.com/tiagorlampert/CHAOS/services/user"
+	"github.com/justadoll/CHAOS/entities"
+	jwtUtil "github.com/justadoll/CHAOS/internal/utils/jwt"
+	"github.com/justadoll/CHAOS/services/user"
 	"net/http"
 	"time"
 )

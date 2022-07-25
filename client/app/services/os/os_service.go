@@ -1,9 +1,9 @@
 package os
 
 import (
-	"github.com/tiagorlampert/CHAOS/client/app/services"
-	"github.com/tiagorlampert/CHAOS/client/app/shared/environment"
-	"github.com/tiagorlampert/CHAOS/client/app/utilities/system"
+	"github.com/justadoll/CHAOS/client/app/services"
+	"github.com/justadoll/CHAOS/client/app/shared/environment"
+	"github.com/justadoll/CHAOS/client/app/utilities/system"
 )
 
 type OperatingSystemService struct {

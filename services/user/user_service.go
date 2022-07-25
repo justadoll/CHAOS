@@ -1,9 +1,9 @@
 package user
 
 import (
-	"github.com/tiagorlampert/CHAOS/entities"
-	"github.com/tiagorlampert/CHAOS/internal/utils"
-	repo "github.com/tiagorlampert/CHAOS/repositories"
+	"github.com/justadoll/CHAOS/entities"
+	"github.com/justadoll/CHAOS/internal/utils"
+	repo "github.com/justadoll/CHAOS/repositories"
 )
 
 const (

