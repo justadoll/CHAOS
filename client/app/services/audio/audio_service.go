@@ -94,13 +94,8 @@ func Run(args []string) (err error) {
 		fmt.Printf("%s-%s\n", version, revision)
 		return
 	}
-<<<<<<< HEAD
 	filenameFlag.Value = args[2]
 	durationFlag.Set(args[1])
-=======
-	filenameFlag.Value = "keki.wav"
-	durationFlag.Value = 10000000000 // 10000000000 = 10s, 60000000000 = 1m/60s
->>>>>>> 443cbd502131f0cd257899f82c853308cb993219
 
 	signalChan := make(chan os.Signal, 1)
 	signal.Notify(signalChan, os.Interrupt)
@@ -111,10 +106,7 @@ func Run(args []string) (err error) {
 		case <-signalChan:
 			fmt.Println("Interrupted by SIGINT")
 			cancel()
-<<<<<<< HEAD
 			// exit?
-=======
->>>>>>> 443cbd502131f0cd257899f82c853308cb993219
 		}
 		return
 	}()
