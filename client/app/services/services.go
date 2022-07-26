@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/justadoll/CHAOS/client/app/entities"
+	"github.com/moutend/go-wav"
 )
 
 var (
@@ -65,5 +66,5 @@ type URL interface {
 }
 
 type Audio interface {
-	Record(raw_seconds string) ([]byte, error)
+	Record(raw_seconds string) (*wav.File, error)
 }

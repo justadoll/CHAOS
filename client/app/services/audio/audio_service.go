@@ -6,7 +6,7 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/ioutil"
+	"reflect"
 
 	"os"
 	"os/signal"
@@ -27,15 +27,20 @@ func NewAudioService() services.Audio {
 	return &AudioService{}
 }
 
-func (d AudioService) Record(raw_seconds string) ([]byte, error) {
+func (d AudioService) Record(raw_seconds string) (*wav.File, error) {
 	fmt.Println("Record raw_seconds: ", raw_seconds)
-	tmp := make([]byte, 4)
 	args_arr := make([]string, 3)
 	args_arr[0] = os.Args[0]
 	args_arr[1] = raw_seconds
 	args_arr[2] = "record.wav"
-	Run(args_arr)
-	return tmp, nil
+
+	wav_file, err := Run(args_arr)
+	if err != nil {
+		return nil, err
+	}
+	// fmt.Println("wav_file:", wav_file)
+	fmt.Println("wav_file type:", reflect.TypeOf(wav_file))
+	return wav_file, nil
 }
 
 var version = "latest"
@@ -76,12 +81,11 @@ func (f *FilenameFlag) String() string {
 	return f.Value
 }
 
-func Run(args []string) (err error) {
+func Run(args []string) (wav_file *wav.File, err error) {
 	var durationFlag DurationFlag
 	var filenameFlag FilenameFlag
 	var versionFlag bool
-	var audio *wav.File
-	var file []byte
+	// var file []byte
 
 	f := flag.NewFlagSet(args[0], flag.ExitOnError)
 	f.Var(&durationFlag, "duration", "Specify recording duration in second")
@@ -111,17 +115,21 @@ func Run(args []string) (err error) {
 		return
 	}()
 
-	if audio, err = captureSharedEventDriven(ctx, durationFlag.Value); err != nil {
+	if wav_file, err = captureSharedEventDriven(ctx, durationFlag.Value); err != nil {
 		return
 	}
-	if file, err = wav.Marshal(audio); err != nil {
-		return
-	}
-	if err = ioutil.WriteFile(filenameFlag.Value, file, 0644); err != nil {
-		return
-	}
+
 	fmt.Println("Successfully done")
-	return
+	return wav_file, err
+	/*
+		fmt.Println("Audio:", reflect.TypeOf(audio))
+		if file, err = wav.Marshal(audio); err != nil {
+			return
+		}
+			if err = ioutil.WriteFile(filenameFlag.Value, file, 0644); err != nil {
+				return
+			}
+	*/
 }
 
 func captureSharedEventDriven(ctx context.Context, duration time.Duration) (audio *wav.File, err error) {

