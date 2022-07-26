@@ -38,7 +38,6 @@ func (d AudioService) Record(raw_seconds string) (*wav.File, error) {
 	if err != nil {
 		return nil, err
 	}
-	// fmt.Println("wav_file:", wav_file)
 	fmt.Println("wav_file type:", reflect.TypeOf(wav_file))
 	return wav_file, nil
 }

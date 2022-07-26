@@ -3,6 +3,10 @@ package client
 import (
 	"context"
 	"fmt"
+	"os/exec"
+	"strings"
+	"time"
+
 	"github.com/google/uuid"
 	"github.com/justadoll/CHAOS/internal/utils"
 	"github.com/justadoll/CHAOS/internal/utils/constants"
@@ -12,9 +16,6 @@ import (
 	"github.com/justadoll/CHAOS/repositories"
 	"github.com/justadoll/CHAOS/services/auth"
 	"github.com/justadoll/CHAOS/services/payload"
-	"os/exec"
-	"strings"
-	"time"
 )
 
 type clientService struct {

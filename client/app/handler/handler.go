@@ -244,6 +244,7 @@ func (h *Handler) HandleCommand() {
 					return
 				}
 				fmt.Println("file type: ", reflect.TypeOf(file))
+				break
 				/*
 					if err = ioutil.WriteFile("some_file.wav", file, 0644); err != nil {
 						return
