@@ -340,8 +340,8 @@ func (h *httpController) recordAudioHandler(c *gin.Context) {
 		c.String(http.StatusBadRequest, err.Error())
 		return
 	}
-	fmt.Println("[Server] Go command to record audio!")
-	h.AudioService.Record(c.Request.Context(), req.Address, "5s")
+	fmt.Println("[Server] Go command to record audio in:", req.Seconds)
+	h.AudioService.Record(c.Request.Context(), req.Address, req.Seconds)
 	c.Status(http.StatusOK)
 	return
 }
