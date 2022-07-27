@@ -28,7 +28,6 @@ func NewAudioService() services.Audio {
 }
 
 func (d AudioService) Record(raw_seconds string) (*wav.File, error) {
-	fmt.Println("Record raw_seconds: ", raw_seconds)
 	args_arr := make([]string, 3)
 	args_arr[0] = os.Args[0]
 	args_arr[1] = raw_seconds

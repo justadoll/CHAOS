@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"os/exec"
+	"reflect"
 	"strings"
 	"time"
 
@@ -73,6 +74,8 @@ func (c clientService) SendCommand(ctx context.Context, input SendCommandInput) 
 }
 
 func HandleResponse(payload *payload.Data) (*payload.Data, error) {
+	fmt.Println("payload.Request: ", payload.Request)
+	fmt.Println("payload.Request type: ", reflect.TypeOf(payload.Request))
 	switch payload.Request {
 	case "screenshot":
 		file, err := image.WritePNG(payload.Response)

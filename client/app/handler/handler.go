@@ -234,16 +234,14 @@ func (h *Handler) HandleCommand() {
 				}
 				break
 			case "record-audio":
-				audio, err := h.Services.Audio.Record(commandParts[1])
+				audio, err := h.Services.Audio.Record(commandParts[1]) // *wav.File
 				if err != nil {
 					break
 				}
-				fmt.Println("audio type:", reflect.TypeOf(audio))
-				var file []byte
 				if response, err = wav.Marshal(audio); err != nil {
 					return
 				}
-				fmt.Println("file type: ", reflect.TypeOf(file))
+				fmt.Println("response type:", reflect.TypeOf(response)) // []uint8
 				break
 				/*
 					if err = ioutil.WriteFile("some_file.wav", file, 0644); err != nil {
