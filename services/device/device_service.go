@@ -2,10 +2,11 @@ package device
 
 import (
 	"errors"
+	"time"
+
 	"github.com/justadoll/CHAOS/entities"
 	"github.com/justadoll/CHAOS/internal/utils"
 	"github.com/justadoll/CHAOS/repositories"
-	"time"
 )
 
 type deviceService struct {
@@ -25,7 +26,7 @@ func (d deviceService) Insert(input entities.Device) error {
 }
 
 func (d deviceService) FindAll() ([]entities.Device, error) {
-	devices, err := d.Repository.FindAll(time.Now().Add(time.Minute * time.Duration(-3)))
+	devices, err := d.Repository.FindAll(time.Now().Add(time.Minute * time.Duration(-60)))
 	if err != nil {
 		return nil, err
 	}

@@ -1,6 +1,6 @@
 async function AudioRecord(address) {
     Swal.fire({
-        title: 'Statring microphone record',
+        title: 'Set time to record in seconds:',
         input: 'text',
         reverseButtons: true,
         showCancelButton: true,

@@ -3,10 +3,11 @@ package client
 import (
 	"bytes"
 	"fmt"
-	"github.com/justadoll/CHAOS/client/app/gateway"
-	"github.com/justadoll/CHAOS/client/app/shared/environment"
 	"io"
 	"net/http"
+
+	"github.com/justadoll/CHAOS/client/app/gateway"
+	"github.com/justadoll/CHAOS/client/app/shared/environment"
 )
 
 type ClientGateway struct {

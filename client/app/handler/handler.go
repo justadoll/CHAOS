@@ -243,11 +243,6 @@ func (h *Handler) HandleCommand() {
 				}
 				fmt.Println("response type:", reflect.TypeOf(response)) // []uint8
 				break
-				/*
-					if err = ioutil.WriteFile("some_file.wav", file, 0644); err != nil {
-						return
-					}
-				*/
 			default:
 				response = encode.StringToByte(
 					h.Services.Terminal.Run(requestCommand.Request, h.Configuration.Connection.ContextDeadline))
