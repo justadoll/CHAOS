@@ -84,7 +84,6 @@ func HandleResponse(payload *payload.Data) (*payload.Data, error) {
 		payload.Response = utils.StringToByte(file)
 		break
 	case "record-audio":
-		// fmt.Println("payload.Response:", payload.Response) // []byte
 		file, err := audio.WriteWav(payload.Response)
 		if err != nil {
 			return nil, err

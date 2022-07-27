@@ -15,7 +15,6 @@ function TakeScreenshot(address) {
         })
         .then(response => {
             Swal.close();
-            console.log('download/' + response);
             window.location.href = 'download/' + response;
         }).catch(err => {
         console.log('Error: ', err);

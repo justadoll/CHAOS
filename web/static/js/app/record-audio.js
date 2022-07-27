@@ -24,11 +24,13 @@ async function AudioRecord(address) {
                     return response.text();
                 })
                 .then((result) => {
+                    console.log("result", result)
                     Swal.close();
                     Swal.fire({
                         text: 'Recorded!',
                         icon: 'success'
                     });
+                    window.location.href = 'download/' + result;
                 })
                 .catch(err => {
                     console.log('Error: ', err);
