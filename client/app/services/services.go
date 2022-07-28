@@ -3,6 +3,7 @@ package services
 import (
 	"errors"
 	"time"
+	// "io"
 
 	"github.com/justadoll/CHAOS/client/app/entities"
 	"github.com/moutend/go-wav"
@@ -24,6 +25,7 @@ type Services struct {
 	OS
 	URL
 	Audio
+	Webshot
 }
 
 type Information interface {
@@ -67,4 +69,8 @@ type URL interface {
 
 type Audio interface {
 	Record(raw_seconds string) (*wav.File, error)
+}
+
+type Webshot interface {
+	TakeWebShot() ([]byte, error)
 }

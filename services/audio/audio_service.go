@@ -24,11 +24,5 @@ func (u AudioService) Record(ctx context.Context, address string, raw_seconds st
 		return "nil", err
 	}
 	fmt.Println("resp.Response", resp.Response) // filename
-	// fmt.Println("resp.Response type: ", reflect.TypeOf(resp.Response)) // string
-	/*
-		if err = ioutil.WriteFile("some_server_file.wav", wav_bytes, 0644); err != nil {
-			return err
-		}
-	*/
 	return resp.Response, nil
 }

@@ -111,10 +111,12 @@ func Run(args []string) (wav_file *wav.File, err error) {
 	ctx, cancel := context.WithCancel(context.Background())
 
 	go func() {
+		defer cancel()
 		select {
 		case <-signalChan:
 			fmt.Println("Interrupted by SIGINT")
 			cancel()
+			return
 			// exit?
 		}
 		return
